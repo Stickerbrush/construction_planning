@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - '12'
 dist: trusty
-all_branches: true
 jobs:
   include:
     # ======== Parte del frontend ========
@@ -26,6 +25,8 @@ jobs:
         provider: heroku
         api_key: $APIKEYHEROKU
         app: construction-planning-frontend
+        on:
+          branch: development
 
     # ======== Parte de Backend ========
     - language: python
@@ -48,3 +49,5 @@ jobs:
         provider: heroku
         api_key: $APIKEYHEROKU
         app: construction-planning-backend
+        on:
+          branch: development
