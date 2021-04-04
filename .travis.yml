@@ -1,0 +1,57 @@
+language: node_js
+node_js:
+  - '12'
+dist: trusty
+jobs:
+  include:
+    # ======== Parte del frontend ========
+    - language: node_js
+      node_js:  '12'
+
+      warnings_are_errors: false
+
+      cache:
+        directories:
+          - node_modules
+
+      branches:
+        only:
+          - development
+
+      before_install:
+        - cd front_end
+
+      script:
+          - npm test
+          - npm run build
+
+      deploy:
+        provider: heroku
+        api_key: $APIKEYHEROKU
+        app: construction-planning-frontend
+
+    # ======== Parte de Backend ========
+    - language: python
+      python:
+        - "2.7"
+        - "3.4"
+
+      warnings_are_errors: false
+
+      branches:
+        only:
+          - master
+
+      before_install:
+        - cd back_end
+
+      before_script:
+        - pip install -r requirements.txt
+        - python manage.py migrate
+      script:
+          - python manage.py runserver
+          
+      deploy:
+        provider: heroku
+        api_key: $APIKEYHEROKU
+        app: construction-planning-backend
