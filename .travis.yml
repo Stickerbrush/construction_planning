@@ -27,8 +27,6 @@ jobs:
         app: construction-planning-frontend
         on:
           branch: development
-        on:
-          branch: main
 
     # ======== Parte de Backend ========
     - language: python
@@ -53,5 +51,3 @@ jobs:
         app: construction-planning-backend
         on:
           branch: development
-        on:
-          branch: main
