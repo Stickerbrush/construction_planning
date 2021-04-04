@@ -33,7 +33,7 @@ jobs:
     # ======== Parte de Backend ========
     - language: python
       python:
-        - "3.4"
+        - "3.6"
 
       warnings_are_errors: false
 
