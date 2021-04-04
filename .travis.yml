@@ -16,7 +16,7 @@ jobs:
 
       branches:
         only:
-          - development
+          - master
 
       before_install:
         - cd front_end
@@ -33,7 +33,7 @@ jobs:
     # ======== Parte de Backend ========
     - language: python
       python:
-        - "3.6"
+        - "3.8.1"
 
       warnings_are_errors: false
 
