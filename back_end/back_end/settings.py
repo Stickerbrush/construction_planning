@@ -30,14 +30,31 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+
+DJANGO_APPS = (
+	# Aca irian esas que estan desde el inicio del proyecto y vienen por defecto
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+)
+
+THIRD_PARTY_APPS = (
+	# Aca irian apps externas como Django Rest Framework, Celery, django debug toolbar, etc
+)
+
+LOCAL_APPS = (
+	# Aca irian las apps de nuestros proyectos que vamoss a instalar, cosas como posts, perfiles, nosé
+    'clientes',
+    'materiales',
+    'obras',
+    'proveedores',
+    'trabajadores',
+)
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,10 +91,21 @@ WSGI_APPLICATION = 'back_end.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'construction_planning',
+        'USER': 'postgres',
+        'PASSWORD': '6488',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
